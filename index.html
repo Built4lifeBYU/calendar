@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Built4Life Calendar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    .fc-toolbar-title {
+      color: #002E5D;
+      font-weight: bold;
+    }
+
+    .fc-button-primary {
+      background-color: #002E5D;
+      border-color: #002E5D;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Built4Life Events Calendar</h2>
+  <div id="calendar"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        height: 700,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,listMonth'
+        },
+        events: [
+          { title: "Pacific Islander Student-Athlete Dinner (6pm)", start: "2026-02-19T18:00:00" },
+          { title: "Stories of Life Event", start: "2026-02-26" },
+          { title: "Career Trek to Vivint and Doterra", start: "2026-02-27" },
+
+          { title: "Athletic Trainer Month", start: "2026-03-01", end: "2026-04-01", display: "background" },
+          { title: "Belonging Begins w/ Us Campaign", start: "2026-03-01", end: "2026-04-01", display: "background" },
+
+          { title: "NCAA Common Ground", start: "2026-03-02", end: "2026-03-06" },
+          { title: "More Than an Athlete Night", start: "2026-03-02" },
+          { title: "Built4Life Workshop – Career Exploration (11am SAB)", start: "2026-03-05T11:00:00" },
+          { title: "Built4Life Workshop – Career Exploration (11am SAB)", start: "2026-03-19T11:00:00" },
+
+          { title: "Sports Hero Day", start: "2026-03-26" },
+          { title: "Y-Awards / Closing Social", start: "2026-03-30" },
+
+          { title: "Arab-American Heritage Month", start: "2026-04-01", end: "2026-05-01", display: "background" },
+          { title: "Inclusive Sports Foundation", start: "2026-04-03" },
+          { title: "Built2Serve / Service Trip", start: "2026-04-19", end: "2026-04-23" },
+          { title: "Student-Athlete Graduation Banquet", start: "2026-04-22" },
+
+          { title: "Black Student-Athlete Summit", start: "2026-05-20", end: "2026-05-24" }
+        ]
+      });
+
+      calendar.render();
+    });
+  </script>
+
+</body>
+</html>
