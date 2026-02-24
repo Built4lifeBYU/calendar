@@ -84,27 +84,10 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', async function () {
+    document.addEventListener('DOMContentLoaded', function () {
 
       const calendarEl = document.getElementById('calendar');
       const tooltip = document.getElementById('event-tooltip');
-
-      let events = [];
-
-      try {
-        const response = await fetch("https://calendar.byu.edu/api/Events.json?categories=10");
-        const data = await response.json();
-
-        events = data.map(event => ({
-          title: event.Title,
-          start: event.StartDateTime,
-          end: event.EndDateTime,
-          url: event.MoreInformationUrl
-        }));
-
-      } catch (error) {
-        console.error("Failed to fetch BYU events:", error);
-      }
 
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -115,19 +98,18 @@
           center: 'title',
           right: 'dayGridMonth,listMonth'
         },
-        events: events,
 
-        eventClick: function(info) {
-          if (info.event.url) {
-            window.open(info.event.url, "_blank");
-            info.jsEvent.preventDefault();
-          }
-        },
+        // 🔥 THIS pulls from your shared GitHub file
+        events: "https://built4lifebyu.github.io/events.json",
 
         eventMouseEnter: function (info) {
           const start = info.event.start;
           const dateStr = start
-            ? start.toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' })
+            ? start.toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                month: 'long', 
+                day: 'numeric' 
+              })
             : '';
 
           document.getElementById('tip-title').textContent = info.event.title;
